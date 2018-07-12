@@ -193,11 +193,11 @@ VENTANA MODAL AGREGAR USUARIO
             <div class="form-group">
               
               <div class="panel">SUBIR FOTO</div>
-              <input type="file" id="nuevaFoto" name="nuevaFoto">
+              <input type="file" class="nuevaFoto" name="nuevaFoto">
 
-              <p class="help-block">Peso máximo de la foto 20 MB</p>
+              <p class="help-block">Peso máximo de la foto 2 MB</p>
 
-              <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="100px">
+              <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
             
             </div>
 
