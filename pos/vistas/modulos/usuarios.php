@@ -1,5 +1,7 @@
 <div class="content-wrapper">
    
+    <!-- cabezera del modulo -->
+    
     <section class="content-header">
       
       <h1>
@@ -19,10 +21,12 @@
     
     </section>
 
-
+    
     <section class="content">
 
       <div class="box">
+
+      <!-- boton agregar usuario -->
 
         <div class="box-header with-border">
 
@@ -33,6 +37,8 @@
           </button>
 
         </div>
+
+        <!-- tabla de usuarios -->
 
         <div class="box-body">
 

@@ -21,8 +21,13 @@ $(".nuevaFoto").change(function () {
 			confirmButtonText: "cerrar"
 			
 			});
+		/*=====  End of Validación formato de imagen .jpg o png   ======*/
 
-	}else if (imagen["size"] > "2097152") {
+		/*===========================================================
+		=            Validación del tamaño de la imagen             =
+		===========================================================*/
+		
+	}else if (imagen["size"] > 2097152) {
 
 		$(".nuevaFoto").val("");
 		swal({
@@ -33,6 +38,11 @@ $(".nuevaFoto").change(function () {
 			confirmButtonText: "cerrar"
 			
 			});
+		/*=====  End of Validación del tamaño de la imagen   ======*/
+
+		/*=====================================================
+		=            previsualización de la imagen            =
+		=====================================================*/
 
 	}else{
 
@@ -46,7 +56,12 @@ $(".nuevaFoto").change(function () {
 			$(".previsualizar").attr("src", rutaImagen);
 
 		})
+
 	}
+
+	/*=====  End of previsualización de la imagen  ======*/
 	
 
 })
+
+/*=====  End of Agregando Foto de usuario   ======*/

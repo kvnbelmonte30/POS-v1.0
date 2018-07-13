@@ -2,9 +2,6 @@
 
 	require_once "conexion.php";
 
-	/**
-	* 
-	*/
 	class ModeloUsuarios{
 		
 		/*=======================================
@@ -26,17 +23,20 @@
 			$stmt = null;
 		}
 
+		/*=====  End of MOSTRAR USUARIOS   ======*/
+
 		/*=======================================
-		=        RESGISTRO DE USUARIOS          =
+		=        REGISTRO DE USUARIOS          =
 		=======================================*/
 
 		static public function mdlIngresarUsuario($tabla, $datos){
 
-			$stmt= conexion::conectar()-> prepare("INSERT INTO $tabla(nombre, usuario, password, perfil) VALUES (:nombre, :usuario, :password, :perfil)");
+			$stmt= conexion::conectar()-> prepare("INSERT INTO $tabla(nombre, usuario, password, perfil, foto) VALUES (:nombre, :usuario, :password, :perfil, :foto)");
 			$stmt-> bindParam(":nombre",$datos["nombre"], PDO::PARAM_STR);
 			$stmt-> bindParam(":usuario",$datos["usuario"], PDO::PARAM_STR);
 			$stmt-> bindParam(":password",$datos["password"], PDO::PARAM_STR);
 			$stmt-> bindParam(":perfil",$datos["perfil"], PDO::PARAM_STR);
+			$stmt-> bindParam(":foto",$datos["foto"], PDO::PARAM_STR);
 
 			if ($stmt-> execute()) {
 				
@@ -52,5 +52,7 @@
 			$stmt = null;
 
 		}
+
+		/*=====  End of REGISTRO DE USUARIOS   ======*/
 				
 	}
