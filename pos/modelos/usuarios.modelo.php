@@ -10,13 +10,28 @@
 
 		static public function MdlMostrarUsuarios($tabla, $item, $valor){
 
-			$stmt= conexion::conectar()-> prepare("SELECT * FROM $tabla WHERE $item = :$item");
+			if($item != null){
 
-			$stmt-> bindParam(":".$item, $valor, PDO::PARAM_STR);
+				$stmt= conexion::conectar()-> prepare("SELECT * FROM $tabla WHERE $item = :$item");
 
-			$stmt-> execute();
+				$stmt-> bindParam(":".$item, $valor, PDO::PARAM_STR);
 
-			return $stmt-> fetch();
+				$stmt-> execute();
+
+				return $stmt-> fetch();
+
+			}else{
+
+				$stmt= conexion::conectar()-> prepare("SELECT * FROM $tabla");
+
+				$stmt-> execute();
+
+				return $stmt-> fetchAll();
+				 
+
+			}
+
+			
 
 			$stmt -> close();
 

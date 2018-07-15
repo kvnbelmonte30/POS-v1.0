@@ -52,6 +52,7 @@ class ControladorUsuarios{
 	/*=========================================
 	=            REGISTRAR USUARIO            =
 	=========================================*/
+
 	static public function ctrCrearUsuario(){
 
 		if(isset($_POST["nuevoUsuario"])){
@@ -89,13 +90,14 @@ class ControladorUsuarios{
 				if ($_FILES["nuevaFoto"]["type"] == "image/jpeg") {
 					
 					$aleatorio = mt_rand(100,999); 
+
 					$ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".jpg";
 
-					$origen = imagecreatefromjpeg($_POST["nuevoUsuario"]["tmp_name"]);
+					$origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
 
 					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
-					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+					imagecopyresampled($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 					imagejpeg($destino, $ruta);
 
 				}
@@ -105,11 +107,11 @@ class ControladorUsuarios{
 					$aleatorio = mt_rand(100,999); 
 					$ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".png";
 
-					$origen = imagecreatefrompng($_POST["nuevoUsuario"]["tmp_name"]);
+					$origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);
 
 					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
-					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+					imagecopyresampled($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 					imagepng($destino, $ruta);
 
 				}
@@ -179,6 +181,21 @@ class ControladorUsuarios{
 				</script>';
 			}
 		}
-	/*=====  End of REGISTRAR USUARIO  ======*/
 	}
+
+	/*=====  End of REGISTRAR USUARIO  ======*/
+
+	/*========================================
+	=            MOSTRAR USUARIOS            =
+	========================================*/
+	
+	static public function ctrMostrarUsuarios($item, $valor){
+
+		$tabla="usuarios";
+		$respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item, $valor);
+		return $respuesta;
+	}
+	
+	/*=====  End of MOSTRAR USUARIOS  ======*/
+	
 }
